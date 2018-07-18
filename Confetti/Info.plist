@@ -49,6 +49,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSContactsUsageDescription</key>
+	<string>Used to add friends</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to grab a photo</string>
 	<key>UIAppFonts</key>
@@ -75,8 +77,6 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>NSContactsUsageDescription</key>
-	<string>Used to add friends</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
