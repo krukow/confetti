@@ -1,11 +1,13 @@
 #!/bin/bash
 
+export TEST_BUILD_DIR=test-builds
+mkdir -p $TEST_BUILD_DIR
 xcrun xcodebuild build-for-testing \
   -configuration Debug \
   -workspace Confetti.xcworkspace \
   -sdk iphoneos \
   -scheme Confetti \
-  -derivedDataPath $APPCENTER_OUTPUT_DIRECTORY
+  -derivedDataPath $TEST_BUILD_DIR
 
 appcenter test run xcuitest \
   --app "ContinuousDeliveryInc/Confetti" \
@@ -13,5 +15,7 @@ appcenter test run xcuitest \
   --app-path $APPCENTER_OUTPUT_DIRECTORY/Confetti.ipa \
   --test-series "smoke-tests" \
   --locale "en_US" \
-  --build-dir $APPCENTER_OUTPUT_DIRECTORY/Build/Products/Debug-iphoneos \
+  --build-dir $TEST_BUILD_DIR/Build/Products/Debug-iphoneos \
   --token $APPCENTER_API_TOKEN
+
+rm -fr $TEST_BUILD_DIR
