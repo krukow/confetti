@@ -9,11 +9,11 @@ xcrun xcodebuild build-for-testing \
   -scheme Confetti \
   -derivedDataPath $BUILD_DIR
 
- appcenter test run xcuitest \
-  --app "confetti/confetti-swift" \
-  --devices "confetti/confetti-smoketest" \
-  --test-series "master" \
+appcenter test run xcuitest \
+  --app "ContinuousDeliveryInc/Confetti" \
+  --devices "ContinuousDeliveryInc/smoke-test-device-set" \
+  --app-path $APPCENTER_OUTPUT_DIRECTORY/Confetti.ipa \
+  --test-series "smoke-tests" \
   --locale "en_US" \
-  --build-dir $BUILD_DIR/Build/Products/Debug-iphoneos
-
-# rm -rf $BUILD_DIR
+  --build-dir $BUILD_DIR/Build/Products/Debug-iphoneos \
+  --token $APPCENTER_API_TOKEN
