@@ -53,6 +53,7 @@ class ConfettiUITests: XCTestCase {
     func addEvent(person: String, waitForImages: Bool = false) {
         let app = XCUIApplication()
         
+        
         step("Add event") {
             app.buttons["AddButton"].tap()
         }
@@ -120,16 +121,18 @@ class ConfettiUITests: XCTestCase {
             app.buttons["Me"].tapIfExists()
         }
         
-        step("Crash") {            
-            app.tables/*@START_MENU_TOKEN@*/.staticTexts["Crash the app!"]/*[[".cells.staticTexts[\"Crash the app!\"]",".staticTexts[\"Crash the app!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        }
-        
-        step("Should not get here") {
-            self.waitFor(element: app.buttons["Me"])
+        if TARGET_OS_SIMULATOR == 0 {
+            step("Crash") {
+                app.tables/*@START_MENU_TOKEN@*/.staticTexts["Crash the app!"]/*[[".cells.staticTexts[\"Crash the app!\"]",".staticTexts[\"Crash the app!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            }
+            
+            step("Should not get here") {
+                self.waitFor(element: app.buttons["Me"])
+            }
         }
     }
     
-    func sendCrash() {
+    func testSendCrash() {
         let app = XCUIApplication()
         step("Login") {
             app.buttons["I'd rather not"].tapIfExists()
