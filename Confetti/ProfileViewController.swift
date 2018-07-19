@@ -88,7 +88,7 @@ class ProfileViewController : UITableViewController, HeroStretchable {
             sections.append(loggedIn)
         }
         
-        if AppDelegate.shared.runMode == .debug {
+        if AppDelegate.shared.runMode == .debug  || AppDelegate.shared.runMode == .testRun {
             sections.append(debug)
         }
         

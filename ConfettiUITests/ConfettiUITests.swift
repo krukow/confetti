@@ -107,6 +107,35 @@ class ConfettiUITests: XCTestCase {
         
         app.staticTexts["Logout"].tap()
     }
+    
+    func testCrash() {
+        let app = XCUIApplication()
+        step("Login") {
+            app.buttons["I'd rather not"].tapIfExists()
+        }
+        
+        waitFor(element: app.buttons["Me"])
+        
+        step("Me") {
+            app.buttons["Me"].tapIfExists()
+        }
+        
+        step("Crash") {            
+            app.tables/*@START_MENU_TOKEN@*/.staticTexts["Crash the app!"]/*[[".cells.staticTexts[\"Crash the app!\"]",".staticTexts[\"Crash the app!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        }
+        
+        step("Should not get here") {
+            self.waitFor(element: app.buttons["Me"])
+        }
+    }
+    
+    func sendCrash() {
+        let app = XCUIApplication()
+        step("Login") {
+            app.buttons["I'd rather not"].tapIfExists()
+        }
+        
+    }
 }
 
 extension XCUIElement {
@@ -116,3 +145,4 @@ extension XCUIElement {
         }
     }
 }
+

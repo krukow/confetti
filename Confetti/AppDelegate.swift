@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
         
-        MSAppCenter.start("9c903184-9f6f-44d8-b1b4-01750b951ece", withServices: appCenterServices)
+        MSAppCenter.start("0bd2b6dd-7207-4337-8509-8a4e4e4e598a", withServices: appCenterServices)
                 
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
