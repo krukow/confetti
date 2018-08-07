@@ -39,7 +39,13 @@ extension EventViewModel {
         let data = UIImageJPEGRepresentation(image, 0.5)!
         saveImage(data: data)
     }
-    
+
+    func clearImage() {
+        EventViewModel.imageCache[event.person.photoUUID!] = nil
+        event = event.with(person: event.person.withoutImage())
+        UserViewModel.current.updateEvent(event)
+    }
+
     func saveImage(data: Data) {
         let uuid = UUID().uuidString // we always allocate a new image, rather than replacing
         let imageRef = imagesNode.child(uuid)

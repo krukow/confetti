@@ -25,6 +25,18 @@ extension Person {
         return p
     }
     
+    public func withoutImage() -> Person {
+        let p = Person(
+            emails: self.emails,
+            firstName: self.firstName,
+            lastName: self.lastName,
+            nickname: self.nickname,
+            phones: self.phones,
+            photoUUID: nil
+        )
+        return p
+    }
+
     public var fullName: String {
         return "\(firstName) \(lastName ?? "")".trimmingCharacters(in: .whitespaces)
     }
