@@ -184,7 +184,7 @@ public struct Document : Collection, ExpressibleByDictionaryLiteral, Expressible
         var reserved = 0
         var counter = 0
         
-        let elements: [(UInt8, [UInt8], [UInt8])] = elements.flatMap { element in
+        let elements: [(UInt8, [UInt8], [UInt8])] = elements.compactMap { element in
             defer { counter = counter &+ 1 }
             guard let element = element else {
                 return nil
