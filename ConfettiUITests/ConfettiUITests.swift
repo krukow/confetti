@@ -150,9 +150,6 @@ class ConfettiUITests: XCTestCase {
         step("Options sheet") {
             sleep(1)
         }
-
-        app.sheets.buttons["Clear Photo"].tap()
-
     }
 }
 
