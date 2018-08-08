@@ -9,6 +9,7 @@ import Contacts
 
 import SDWebImage
 import AvatarImageView
+import AppCenterAnalytics
 
 extension Contact {
     func with(image: UIImage? = nil) -> Contact {
@@ -113,6 +114,7 @@ class CreateEventViewController: UIViewController,
         }
         
         performSegue(withIdentifier: "unwindToMain", sender: self)
+        MSAnalytics.trackEvent("createEvent", withProperties: ["type": event.occasion.kind.rawValue]);
     }
     
     @IBAction func choosePhoto(_ sender: Any) {

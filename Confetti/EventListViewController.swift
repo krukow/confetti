@@ -1,5 +1,6 @@
 import UIKit
 import ConfettiKit
+import AppCenterAnalytics
 
 import Firebase
 
@@ -63,6 +64,7 @@ class EventListViewController: UITableViewController, HeroStretchable {
         }
         controller.event = viewModels.first
         navigationController?.pushViewController(controller, animated: true)
+        MSAnalytics.trackEvent("viewDetails", withProperties: ["type": controller.event.event.occasion.kind.rawValue]);
     }
     
     func displayEvent(withKey key: String) {
