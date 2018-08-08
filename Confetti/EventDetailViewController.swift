@@ -212,12 +212,20 @@ class EventDetailViewController : UITableViewController,
         }
     }
     
+    func removePhoto() {
+        event.clearImage()
+        updateDisplay()
+    }
     
     @IBAction func displayActionSheet(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Add Photo", style: .default, handler: { action in
             self.pickPhoto()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Remove Photo", style: .default, handler: { action in
+            self.removePhoto()
         }))
 
         alert.addAction(UIAlertAction(title: "Forget", style: .destructive, handler: { action in
