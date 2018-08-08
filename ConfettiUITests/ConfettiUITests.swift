@@ -132,12 +132,22 @@ class ConfettiUITests: XCTestCase {
         }
     }
     
-    func testSendCrash() {
+    func testOptionsSheet() {
         let app = XCUIApplication()
         step("Login") {
             app.buttons["I'd rather not"].tapIfExists()
         }
         
+        addEvent(person: "Ellen Appleseed", waitForImages: false)
+        addEvent(person: "Hannah Appleseed", waitForImages: false)
+
+        app.cells.element(boundBy: 0).tap()
+
+        app.navigationBars["Confetti.EventDetailView"].children(matching: .button).element(boundBy: 1).tap()
+
+        step("Options sheet") {
+            sleep(1000)
+        }
     }
 }
 
