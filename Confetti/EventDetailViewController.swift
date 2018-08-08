@@ -204,6 +204,11 @@ class EventDetailViewController : UITableViewController,
         present(imagePicker, animated: true)
     }
 
+    func clearPhoto() {
+        event.clearImage()
+        updateDisplay()
+    }
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -218,6 +223,10 @@ class EventDetailViewController : UITableViewController,
         
         alert.addAction(UIAlertAction(title: "Add Photo", style: .default, handler: { action in
             self.pickPhoto()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Clear Photo", style: .default, handler: { action in
+            self.clearPhoto();
         }))
 
         alert.addAction(UIAlertAction(title: "Forget", style: .destructive, handler: { action in
