@@ -41,7 +41,9 @@ extension EventViewModel {
     }
 
     func clearImage() {
-        EventViewModel.imageCache[event.person.photoUUID!] = nil
+        if (event.person.photoUUID != nil) {
+            EventViewModel.imageCache[event.person.photoUUID!] = nil
+        }
         event = event.with(person: event.person.withoutImage())
         UserViewModel.current.updateEvent(event)
     }

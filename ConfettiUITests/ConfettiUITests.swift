@@ -50,6 +50,13 @@ class ConfettiUITests: XCTestCase {
         super.tearDown()
     }
     
+    func loginIfNeeded() {
+        sleep(1)
+        step("Login") {
+            XCUIApplication().buttons["I'd rather not"].tapIfExists()
+        }
+    }
+
     func addEvent(person: String, waitForImages: Bool = false) {
         let app = XCUIApplication()
         
@@ -81,9 +88,7 @@ class ConfettiUITests: XCTestCase {
     func testCreateABirthday() {
         let app = XCUIApplication()
         
-        step("Login") {
-            app.buttons["I'd rather not"].tapIfExists()
-        }
+        loginIfNeeded()
         
         waitFor(element: app.buttons["Me"])
         step("Empty view")
@@ -111,9 +116,7 @@ class ConfettiUITests: XCTestCase {
     
     func testCrash() {
         let app = XCUIApplication()
-        step("Login") {
-            app.buttons["I'd rather not"].tapIfExists()
-        }
+        loginIfNeeded()
         
         waitFor(element: app.buttons["Me"])
         
@@ -134,9 +137,7 @@ class ConfettiUITests: XCTestCase {
     
     func testOptionsSheet() {
         let app = XCUIApplication()
-        step("Login") {
-            app.buttons["I'd rather not"].tapIfExists()
-        }
+        loginIfNeeded()
         
         addEvent(person: "Ellen Appleseed", waitForImages: false)
         addEvent(person: "Hannah Appleseed", waitForImages: false)
@@ -148,6 +149,9 @@ class ConfettiUITests: XCTestCase {
         step("Options sheet") {
             sleep(1)
         }
+
+        app.sheets.buttons["Clear Photo"].tap()
+
     }
 }
 
