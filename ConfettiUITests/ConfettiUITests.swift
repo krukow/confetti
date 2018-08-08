@@ -51,10 +51,13 @@ class ConfettiUITests: XCTestCase {
     }
     
     func loginIfNeeded() {
-        sleep(1)
-        step("Login") {
-            XCUIApplication().buttons["I'd rather not"].tapIfExists()
-            sleep(1)
+        step("Logged in") {
+            let buttonExists = XCUIApplication().buttons["I'd rather not"].waitForExistence(timeout: 2)
+            if (buttonExists) {
+                XCUIApplication().buttons["I'd rather not"].tap()
+                //await animation - and data load
+                sleep(5)
+            }
         }
     }
 
