@@ -146,7 +146,7 @@ class ConfettiUITests: XCTestCase {
         app.navigationBars["Confetti.EventDetailView"].children(matching: .button).element(boundBy: 1).tap()
 
         step("Options sheet") {
-            sleep(1000)
+            sleep(1)
         }
     }
 }
