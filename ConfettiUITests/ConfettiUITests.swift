@@ -54,6 +54,7 @@ class ConfettiUITests: XCTestCase {
         sleep(1)
         step("Login") {
             XCUIApplication().buttons["I'd rather not"].tapIfExists()
+            sleep(1)
         }
     }
 
