@@ -146,9 +146,15 @@ class ConfettiUITests: XCTestCase {
         addEvent(person: "Ellen Appleseed", waitForImages: false)
         addEvent(person: "Hannah Appleseed", waitForImages: false)
 
-        app.cells.element(boundBy: 0).tap()
+        step("Main view")
 
-        app.navigationBars["Confetti.EventDetailView"].children(matching: .button).element(boundBy: 1).tap()
+        step("Event details") {
+            app.cells.element(boundBy: 0).tap()
+        }
+
+        let detailsView = app.navigationBars["Confetti.EventDetailView"]
+
+        detailsView.children(matching: .button).element(boundBy: 1).tap()
 
         step("Options sheet") {
             sleep(1)
