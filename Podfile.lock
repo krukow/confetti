@@ -11,7 +11,6 @@ PODS:
     - AppCenter/Core
   - AppCenter/Push (1.5.0):
     - AppCenter/Core
-  - AppCenterXCUITestExtensions (1.0.0)
   - AvatarImageView (2.1.1)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
@@ -120,7 +119,6 @@ DEPENDENCIES:
   - AppCenter
   - AppCenter/Distribute
   - AppCenter/Push
-  - AppCenterXCUITestExtensions
   - AvatarImageView
   - CodableFirebase
   - DynamicColor
@@ -140,7 +138,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AppCenter
-    - AppCenterXCUITestExtensions
     - AvatarImageView
     - Bolts
     - CodableFirebase
@@ -172,7 +169,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AppCenter: 42c293f0de27e173aacd600a55a49da5317cd40e
-  AppCenterXCUITestExtensions: 8825ed941664fa21d6740a5ed6928a84c06623ac
   AvatarImageView: 50618694f9ce37d07fd0250145e733b34197fb5b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CodableFirebase: 4b865f58c583a6c0ef8c81c6b12c6bf15ebd9181
@@ -202,6 +198,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
 
-PODFILE CHECKSUM: 468694675914897918c29816585b869174cc58e7
+PODFILE CHECKSUM: 2333e2d6f24ff079de85e445f95f5b14b0e62092
 
 COCOAPODS: 1.5.3

@@ -1,24 +1,10 @@
 import XCTest
-import AppCenterXCUITestExtensions
 
-var screenshotsEnabledIfZero = 0
-
-func suspendScreenshots() { screenshotsEnabledIfZero += 1 }
-func resumeScreenshots() { screenshotsEnabledIfZero -= 1 }
-var screenshotsEnabled: Bool { return screenshotsEnabledIfZero == 0 }
-
-func withoutScreenshots(run: ()->()) {
-    suspendScreenshots()
-    run()
-    resumeScreenshots()
-}
-
-func step(_ label: String, run: (()-> ())? = nil) {
-    run?()
-    
-    if screenshotsEnabled {
-        ACTLabel.labelStep(label)
-    }
+func screenshot(activity: XCTActivity) {
+    let screenshot = XCUIScreen.main.screenshot()
+    let attachment = XCTAttachment.init(screenshot: screenshot)
+    attachment.lifetime = XCTAttachment.Lifetime.keepAlways
+    activity.add(attachment)
 }
 
 class ConfettiUITests: XCTestCase {
@@ -28,7 +14,7 @@ class ConfettiUITests: XCTestCase {
         
         let app = XCUIApplication()
         app.launchArguments = ["test"]
-        ACTLaunch.launch(app)
+        app.launch()
     }
     
     func waitFor(element: XCUIElement, timeout: TimeInterval = 5,  file: String = #file, line: UInt = #line) {
@@ -51,7 +37,7 @@ class ConfettiUITests: XCTestCase {
     }
     
     func loginIfNeeded() {
-        step("Logged in") {
+        XCTContext.runActivity(named: "Logged in") { activity in
             let buttonExists = XCUIApplication().buttons["I'd rather not"].waitForExistence(timeout: 2)
             if (buttonExists) {
                 XCUIApplication().buttons["I'd rather not"].tap()
@@ -65,11 +51,11 @@ class ConfettiUITests: XCTestCase {
         let app = XCUIApplication()
         
         
-        step("Add event") {
+        XCTContext.runActivity(named: "Add event") { activity in
             app.buttons["AddButton"].tap()
         }
         
-        step("Choose Birthday") {
+        XCTContext.runActivity(named: "Choose Birthday") { activity in
             app.buttons["Birthday"].tap()
         }
         
@@ -77,14 +63,14 @@ class ConfettiUITests: XCTestCase {
             sleep(5)
         }
         
-        step("Choose '\(person)'") {
+        XCTContext.runActivity(named: "Choose '\(person)'") { activity in
             let search = app.searchFields["Search Contacts"]
             search.tap()
             search.typeText(person)
             app.tables["contacts"].cells.element(boundBy: 0).tap()
         }
         
-        step("Save") {
+        XCTContext.runActivity(named: "Save") { activity in
             app.buttons["Save"].tap()
         }
     }
@@ -95,71 +81,59 @@ class ConfettiUITests: XCTestCase {
         loginIfNeeded()
         
         waitFor(element: app.buttons["Me"])
-        step("Empty view")
-
+        XCTContext.runActivity(named: "Empty view") {
+            activity in
+            screenshot(activity: activity) }
+        
         addEvent(person: "Ellen Appleseed", waitForImages: true)
         
-        withoutScreenshots {
-            for name in ["David", "Hannah", "Stu", "Carrie", "Vinicius"] {
-                addEvent(person: "\(name) Appleseed")
-            }
-        }
+        addEvent(person: "David Appleseed")
         
-        step("Main view")
         
-        step("Event details") {
+        XCTContext.runActivity(named: "Main view") { activity in screenshot(activity: activity) }
+        
+        XCTContext.runActivity(named: "Event details") { activity in
             app.cells.element(boundBy: 0).tap()
+            screenshot(activity: activity)
         }
-        
-        step("View profile") {
+        XCTContext.runActivity(named: "View profile") { activity in
             app.buttons["Me"].tap()
+            screenshot(activity: activity)
         }
         
         app.staticTexts["Logout"].tap()
     }
     
-    func testCrash() {
+    func addEventForPerson(_ name : String) {
         let app = XCUIApplication()
-        loginIfNeeded()
-        
-        waitFor(element: app.buttons["Me"])
-        
-        step("Me") {
-            app.buttons["Me"].tapIfExists()
-        }
-        
-        if TARGET_OS_SIMULATOR == 0 {
-            step("Crash") {
-                app.tables/*@START_MENU_TOKEN@*/.staticTexts["Crash the app!"]/*[[".cells.staticTexts[\"Crash the app!\"]",".staticTexts[\"Crash the app!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-            }
-            
-            step("Should not get here") {
-                self.waitFor(element: app.buttons["Me"])
-            }
-        }
+        app.buttons["AddButton"].tap()
+        app.buttons["Birthday"].tap()
+        let search = app.searchFields["Search Contacts"]
+        search.tap()
+        search.typeText(name)
+        app.tables["contacts"].cells.element(boundBy: 0).tap()
+        app.buttons["Save"].tap()
     }
     
     func testOptionsSheet() {
         let app = XCUIApplication()
-        loginIfNeeded()
         
-        addEvent(person: "Ellen Appleseed", waitForImages: false)
-        addEvent(person: "Hannah Appleseed", waitForImages: false)
-
-        step("Main view")
-
-        step("Event details") {
-            app.cells.element(boundBy: 0).tap()
+        let buttonExists = XCUIApplication().buttons["I'd rather not"].waitForExistence(timeout: 2)
+        if (buttonExists) {
+            XCUIApplication().buttons["I'd rather not"].tap()
+            //await animation - and data load
+            sleep(5)
         }
-
+        
+        waitFor(element: app.buttons["Me"])
+        addEventForPerson("Ellen Appleseed")
+        addEventForPerson("Hanna Appleseed")
+        app.cells.element(boundBy: 0).tap()
+        
         let detailsView = app.navigationBars["Confetti.EventDetailView"]
-
         detailsView.children(matching: .button).element(boundBy: 1).tap()
-
-        step("Options sheet") {
-            sleep(1)
-        }
     }
+
 }
 
 extension XCUIElement {

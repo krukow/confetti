@@ -40,8 +40,3 @@ target 'ConfettiKit' do
   use_frameworks!
   shared_pods
 end
-
-target 'ConfettiUITests' do
-  use_frameworks!
-  pod 'AppCenterXCUITestExtensions'
-end
