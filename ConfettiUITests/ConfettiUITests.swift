@@ -67,6 +67,7 @@ class ConfettiUITests: XCTestCase {
             let search = app.searchFields["Search Contacts"]
             search.tap()
             search.typeText(person)
+            screenshot(activity: activity)
             app.tables["contacts"].cells.element(boundBy: 0).tap()
         }
         
