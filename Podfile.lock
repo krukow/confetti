@@ -1,15 +1,15 @@
 PODS:
-  - AppCenter (1.5.0):
-    - AppCenter/Analytics (= 1.5.0)
-    - AppCenter/Crashes (= 1.5.0)
-  - AppCenter/Analytics (1.5.0):
+  - AppCenter (1.9.0):
+    - AppCenter/Analytics (= 1.9.0)
+    - AppCenter/Crashes (= 1.9.0)
+  - AppCenter/Analytics (1.9.0):
     - AppCenter/Core
-  - AppCenter/Core (1.5.0)
-  - AppCenter/Crashes (1.5.0):
+  - AppCenter/Core (1.9.0)
+  - AppCenter/Crashes (1.9.0):
     - AppCenter/Core
-  - AppCenter/Distribute (1.5.0):
+  - AppCenter/Distribute (1.9.0):
     - AppCenter/Core
-  - AppCenter/Push (1.5.0):
+  - AppCenter/Push (1.9.0):
     - AppCenter/Core
   - AvatarImageView (2.1.1)
   - Bolts (1.9.0):
@@ -18,102 +18,129 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - CodableFirebase (0.2.0)
+  - CodableFirebase (0.2.1)
   - DynamicColor (4.0.2)
-  - FacebookCore (0.3.0):
-    - Bolts (~> 1.8)
-    - FBSDKCoreKit (~> 4.27)
-  - FacebookLogin (0.3.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.3)
-    - FBSDKCoreKit (~> 4.27)
-    - FBSDKLoginKit (~> 4.27)
-  - FacebookShare (0.3.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.3)
-    - FBSDKCoreKit (~> 4.27)
-    - FBSDKShareKit (~> 4.27)
-  - FBSDKCoreKit (4.31.1):
+  - FacebookCore (0.4.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.36)
+  - FacebookLogin (0.4.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.4)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKLoginKit (~> 4.36)
+  - FacebookShare (0.4.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.4)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKShareKit (~> 4.36)
+  - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.31.1):
+  - FBSDKLoginKit (4.37.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.31.1):
-    - FBSDKCoreKit (~> 4.31.1)
-  - Firebase/Auth (4.11.0):
+  - FBSDKShareKit (4.37.0):
+    - FBSDKCoreKit (~> 4.37.0)
+  - Firebase/Auth (5.10.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.0.4)
+  - Firebase/Core (5.10.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.2.0)
+  - Firebase/CoreOnly (5.10.0):
+    - FirebaseCore (= 5.1.5)
+  - Firebase/Database (5.10.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.3)
+  - Firebase/Performance (5.10.0):
     - Firebase/Core
-    - FirebaseAuth (= 4.5.0)
-  - Firebase/Core (4.11.0):
-    - FirebaseAnalytics (= 4.1.0)
-    - FirebaseCore (= 4.0.18)
-  - Firebase/Database (4.11.0):
-    - Firebase/Core
-    - FirebaseDatabase (= 4.1.5)
-  - Firebase/Performance (4.11.0):
-    - Firebase/Core
-    - FirebasePerformance (= 1.1.2)
-  - Firebase/Storage (4.11.0):
-    - Firebase/Core
-    - FirebaseStorage (= 2.1.3)
-  - FirebaseAnalytics (4.1.0):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - FirebasePerformance (= 2.1.2)
+  - Firebase/Storage (5.10.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.2)
+  - FirebaseAnalytics (5.2.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
+    - GoogleAppMeasurement (~> 5.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseAuth (4.5.0):
-    - FirebaseAnalytics (~> 4.1)
-    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+  - FirebaseAuth (5.0.4):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.0)
+    - GoogleUtilities/Environment (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.18):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseDatabase (4.1.5):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
+  - FirebaseAuthInterop (1.0.0)
+  - FirebaseCore (5.1.5):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseDatabase (5.0.3):
+    - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (2.0.10):
-    - FirebaseCore (~> 4.0)
-  - FirebasePerformance (1.1.2):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseInstanceID (~> 2.0)
-    - FirebaseSwizzlingUtilities (~> 1.0)
+  - FirebaseInstanceID (3.2.2):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebasePerformance (2.1.2):
+    - FirebaseAnalytics (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleUtilities/ISASwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.5)
-  - FirebaseStorage (2.1.3):
-    - FirebaseAnalytics (~> 4.1)
-    - FirebaseCore (~> 4.0)
+  - FirebaseStorage (3.0.2):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseSwizzlingUtilities (1.0.0)
-  - FirebaseUI/Storage (4.5.5):
-    - Firebase/Storage (~> 4.0)
+  - FirebaseUI/Storage (5.2.2):
+    - Firebase/Storage (~> 5.0)
     - SDWebImage (~> 4.0)
   - FRStretchImageView (1.2.4)
-  - GoogleToolboxForMac/DebugUtils (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3)":
-    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)"
-  - "GoogleToolboxForMac/NSString+URLArguments (2.1.3)"
-  - GTMSessionFetcher/Core (1.1.15)
+  - GoogleAppMeasurement (5.2.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.1)
+  - GoogleUtilities/ISASwizzler (5.3.1)
+  - GoogleUtilities/Logger (5.3.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.1)"
+  - GoogleUtilities/Reachability (5.3.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.1):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.5.0)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
-  - SQLite.swift (0.11.4):
-    - SQLite.swift/standard (= 0.11.4)
-  - SQLite.swift/standard (0.11.4)
+  - Protobuf (3.6.1)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
 
 DEPENDENCIES:
   - AppCenter
@@ -151,15 +178,17 @@ SPEC REPOS:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
     - FirebasePerformance
     - FirebaseStorage
-    - FirebaseSwizzlingUtilities
     - FirebaseUI
     - FRStretchImageView
+    - GoogleAppMeasurement
     - GoogleToolboxForMac
+    - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
@@ -168,35 +197,37 @@ SPEC REPOS:
     - SQLite.swift
 
 SPEC CHECKSUMS:
-  AppCenter: 42c293f0de27e173aacd600a55a49da5317cd40e
+  AppCenter: 3cf7b9387549e9703dab068793e404013e8c0cc1
   AvatarImageView: 50618694f9ce37d07fd0250145e733b34197fb5b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  CodableFirebase: 4b865f58c583a6c0ef8c81c6b12c6bf15ebd9181
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   DynamicColor: c7adcfe871781a2b39877a5774e452ba51b79eb3
-  FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
-  FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
-  FacebookShare: 0469964297ebd75f052be2c5083389a4208e82b7
-  FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
-  FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
-  FBSDKShareKit: e640c41c9fcd61929eeb3d0c21ad335103e7cb62
-  Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
-  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
-  FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
-  FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
-  FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
-  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  FirebasePerformance: 96c831a9eaf8d2ddf8bb37a4a6f6dd1b4bfe929f
-  FirebaseStorage: 9a863a2bb96c406958eeff7c2f1dfa9f44c44a13
-  FirebaseSwizzlingUtilities: f1c49a5a372ac852c853722a5891a0a5e2344a6c
-  FirebaseUI: 7f149d40db1a67c459df16540256b66d8f8e8c70
+  FacebookCore: 770e57cfe250a4de4458b682191c0ff062dee247
+  FacebookLogin: eb0f2251aca835a94d70a5f7e580edc46d1e1603
+  FacebookShare: ec48492ba748f971c6a13661963f7aae38140111
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
+  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
+  FBSDKShareKit: 52e0083222c38e930eb6878007478326599195c3
+  Firebase: 6691d47562a780c26281ce8464518faafc90c610
+  FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
+  FirebaseAuth: 504b198ceb3472dca5c65bb95544ea44cfc9439e
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
+  FirebaseCore: c6079de64c1a87000e52e9b408dddcadc901177f
+  FirebaseDatabase: e2bcbc106adc4b11a2da3ec2eb63c0c4a44f2f54
+  FirebaseInstanceID: 78ba376fcd5b94c001f9999b2cbd3d1f1e56e78d
+  FirebasePerformance: 65f7eb943ef3cc118899f945065ff9fa2d924e52
+  FirebaseStorage: fd82e5e5c474897e19972b34b22ac0f589dce04e
+  FirebaseUI: 09519bf436a055cd696bf68687d624423150e4c0
   FRStretchImageView: f92f3f6058edf26aca23debfd93d6a3c807c47a9
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GoogleUtilities: e18bfddeb9e93419a04865d4f01722c4d5b014d9
+  GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
-  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
 
 PODFILE CHECKSUM: 2333e2d6f24ff079de85e445f95f5b14b0e62092
 

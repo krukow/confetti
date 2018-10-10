@@ -6,7 +6,7 @@ import UIKit
 import ConfettiKit
 
 import Firebase
-import FirebaseStorageUI
+import FirebaseUI
 
 import SDWebImage
 
